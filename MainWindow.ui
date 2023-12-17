@@ -70,6 +70,47 @@ border-radius: 5px;</string>
      <string>Open</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="edit_btn">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>290</y>
+      <width>181</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255) ;
+border-radius: 5px;
+</string>
+    </property>
+    <property name="text">
+     <string>Edit</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="done_btn">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>290</y>
+      <width>181</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);
+border-radius: 5px;
+</string>
+    </property>
+    <property name="text">
+     <string>Done</string>
+    </property>
+   </widget>
+   <zorder>done_btn</zorder>
+   <zorder>edit_btn</zorder>
+   <zorder>mark_up_btn</zorder>
+   <zorder>image</zorder>
+   <zorder>get_img_btn</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
@@ -88,6 +129,54 @@ border-radius: 5px;</string>
     <hint type="destinationlabel">
      <x>95</x>
      <y>262</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>edit_btn</sender>
+   <signal>clicked()</signal>
+   <receiver>edit_btn</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>120</x>
+     <y>305</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>120</x>
+     <y>305</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>done_btn</sender>
+   <signal>clicked()</signal>
+   <receiver>edit_btn</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>320</x>
+     <y>305</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>120</x>
+     <y>305</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>done_btn</sender>
+   <signal>clicked()</signal>
+   <receiver>done_btn</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>320</x>
+     <y>305</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>320</x>
+     <y>305</y>
     </hint>
    </hints>
   </connection>
