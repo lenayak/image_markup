@@ -6,7 +6,8 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QFileDialog
 from PyQt5.QtGui import QImage
 
-import main_window, save_question
+import main_window
+import save_question
 
 
 class Window(QtWidgets.QMainWindow, main_window.Ui_image_markup):
