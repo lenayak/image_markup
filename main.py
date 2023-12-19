@@ -7,7 +7,7 @@ from PyQt5.QtWidgets import QFileDialog
 from PyQt5.QtGui import QImage
 
 import main_window
-import save_question
+import mark_up
 
 
 class Window(QtWidgets.QMainWindow, main_window.Ui_image_markup):
@@ -15,12 +15,14 @@ class Window(QtWidgets.QMainWindow, main_window.Ui_image_markup):
         super(Window, self).__init__()
         self.setupUi(self)
         self.img_filename = " "
+        self.path_to_save = " "
         self.img = None
         self.widget = None
-        self.tmp = None  # фотография, с которой мы будем работать
+        self.tmp = None  # фотография
+        self.marked_image = None
         self.get_img_btn.clicked.connect(self.load_image)  # загружаем фотографию
         self.mark_up_btn.clicked.connect(self.mark_up)  # размечаем фотографию
-        self.done_btn.clicked.connect(self.show_widget)  # спрашиваем про сохранение
+        self.save_btn.clicked.connect(self.save_img)  # сохраняем
 
     def load_image(self):
         """This function load the user selected image and set it to
@@ -47,29 +49,26 @@ class Window(QtWidgets.QMainWindow, main_window.Ui_image_markup):
 
     def mark_up(self):
         """This function mark up the photo"""
-        if self.tmp is not None:
+        if self.img is not None:
             self.get_img_btn.close()
-            self.edit_btn.show()
             self.mark_up_btn.close()
-            self.done_btn.show()
+            self.save_btn.show()
             try:
-                self.image.setText("<center> Loading... </center>")
-                # функция для разметки фотографии
+                self.marked_image = mark_up.mark_image(self.img)
+                self.set_photo(self.marked_image)
             except:
                 self.image.setText("<center>Something is wrong</center>")
                 # если что-то вдруг пошло не так
         else:
             self.image.setText("<center>You didn't select the image. Try again.</center>")
 
-    def show_widget(self):
-        """This function shows the window with a question about saving a file"""
-        self.widget = Widget()
-        self.widget.show()
-
-class Widget(QtWidgets.QWidget, save_question.Ui_Save_question):
-    def __init__(self):
-        super(Widget, self).__init__()
-        self.setupUi(self)
+    def save_img(self):
+        try:
+            self.path_to_save = "marked_image.jpg"  # исправить захардкоженный путь
+            mark_up.save_marked_image(self.path_to_save, self.marked_image)
+            self.image.setText("<center>Thank you for using this app!</center>")
+        except:
+            self.image.setText("<center>Something is wrong</center>")
 
 
 if __name__ == "__main__":

@@ -1,25 +1,32 @@
-import sys
-
 import cv2
-import numpy as np
 
 
-def mark_object(image):
-    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-    cascade_classifier = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
-    objects = cascade_classifier.detectMultiScale(gray, scaleFactor=1.2, minNeighbors=5)
-    for (x, y, w, h) in objects:
-        cv2.rectangle(image, (x, y), (x + w, y + h), (0, 255, 0), 2)
-    return image
-
-
-def edit_markup(image: object) -> object:
-    cv2.imshow('Markup Editor', image)
+def mark_image(img):
+    """This function marks up a photo using trained models, and shows the user the marked up photo in a large format"""
+    models = [r'C:\Users\lenay\PycharmProjects\image_markup\haarcascade_car.xml',
+              r'C:\Users\lenay\PycharmProjects\image_markup\haarcascade_fullbody.xml']
+    load_model = load_models(models)
+    detected_objects = []
+    for i in load_model:
+        obj = i.detectMultiScale(img, scaleFactor=1.1, minNeighbors=1)
+        detected_objects.append(obj)
+    for obj in detected_objects:
+        for x, y, width, height in obj:
+            cv2.rectangle(img, pt1=(x, y), pt2=(x + width, y + height), color=(50, 50, 50), thickness=1)
+    cv2.imshow('image', img)
     cv2.waitKey(0)
-    if cv2.waitKey(1) == 27:
-        sys.exit()
+    return img
 
 
-image = cv2.imread("C:\\Users\\lenay\\PycharmProjects\\image_markup\\second_img.webp")
-marked_image = mark_object(image)
-edit_markup(marked_image)
+def load_models(models: list):
+    """This function load models to mark up"""
+    loaded = []
+    for i in models:
+        load_model = cv2.CascadeClassifier(i)
+        loaded.append(load_model)
+    return loaded
+
+
+def save_marked_image(path_to_save, img):
+    """This function save the marked up image"""
+    cv2.imwrite(path_to_save, img)

@@ -32,20 +32,13 @@ class Ui_image_markup(object):
         self.get_img_btn.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "border-radius: 5px;")
         self.get_img_btn.setObjectName("get_img_btn")
-        self.edit_btn = QtWidgets.QPushButton(self.centralwidget)
-        self.edit_btn.setGeometry(QtCore.QRect(30, 290, 181, 31))
-        self.edit_btn.setStyleSheet("background-color: rgb(255, 255, 255) ;\n"
+        self.save_btn = QtWidgets.QPushButton(self.centralwidget)
+        self.save_btn.setGeometry(QtCore.QRect(230, 290, 181, 31))
+        self.save_btn.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "border-radius: 5px;\n"
 "")
-        self.edit_btn.setObjectName("edit_btn")
-        self.done_btn = QtWidgets.QPushButton(self.centralwidget)
-        self.done_btn.setGeometry(QtCore.QRect(230, 290, 181, 31))
-        self.done_btn.setStyleSheet("background-color: rgb(255, 255, 255);\n"
-"border-radius: 5px;\n"
-"")
-        self.done_btn.setObjectName("done_btn")
-        self.done_btn.raise_()
-        self.edit_btn.raise_()
+        self.save_btn.setObjectName("save_btn")
+        self.save_btn.raise_()
         self.mark_up_btn.raise_()
         self.image.raise_()
         self.get_img_btn.raise_()
@@ -56,9 +49,7 @@ class Ui_image_markup(object):
 
         self.retranslateUi(image_markup)
         self.get_img_btn.clicked.connect(self.image.clear) # type: ignore
-        self.edit_btn.clicked.connect(self.edit_btn.close) # type: ignore
-        self.done_btn.clicked.connect(self.edit_btn.close) # type: ignore
-        self.done_btn.clicked.connect(self.done_btn.close) # type: ignore
+        self.save_btn.clicked.connect(self.save_btn.close) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(image_markup)
 
     def retranslateUi(self, image_markup):
@@ -67,8 +58,7 @@ class Ui_image_markup(object):
         self.mark_up_btn.setText(_translate("image_markup", "Mark up"))
         self.image.setText(_translate("image_markup", "<center> Your photo </center>"))
         self.get_img_btn.setText(_translate("image_markup", "Open"))
-        self.edit_btn.setText(_translate("image_markup", "Edit"))
-        self.done_btn.setText(_translate("image_markup", "Done"))
+        self.save_btn.setText(_translate("image_markup", "Save"))
 
 
 if __name__ == "__main__":

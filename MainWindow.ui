@@ -70,25 +70,7 @@ border-radius: 5px;</string>
      <string>Open</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="edit_btn">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>290</y>
-      <width>181</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 255, 255) ;
-border-radius: 5px;
-</string>
-    </property>
-    <property name="text">
-     <string>Edit</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="done_btn">
+   <widget class="QPushButton" name="save_btn">
     <property name="geometry">
      <rect>
       <x>230</x>
@@ -103,11 +85,10 @@ border-radius: 5px;
 </string>
     </property>
     <property name="text">
-     <string>Done</string>
+     <string>Save</string>
     </property>
    </widget>
-   <zorder>done_btn</zorder>
-   <zorder>edit_btn</zorder>
+   <zorder>save_btn</zorder>
    <zorder>mark_up_btn</zorder>
    <zorder>image</zorder>
    <zorder>get_img_btn</zorder>
@@ -133,41 +114,9 @@ border-radius: 5px;
    </hints>
   </connection>
   <connection>
-   <sender>edit_btn</sender>
+   <sender>save_btn</sender>
    <signal>clicked()</signal>
-   <receiver>edit_btn</receiver>
-   <slot>close()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>120</x>
-     <y>305</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>120</x>
-     <y>305</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>done_btn</sender>
-   <signal>clicked()</signal>
-   <receiver>edit_btn</receiver>
-   <slot>close()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>320</x>
-     <y>305</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>120</x>
-     <y>305</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>done_btn</sender>
-   <signal>clicked()</signal>
-   <receiver>done_btn</receiver>
+   <receiver>save_btn</receiver>
    <slot>close()</slot>
    <hints>
     <hint type="sourcelabel">
